@@ -3,28 +3,28 @@ exports.up = async function(knex) {
   await knex.schema
   .createTable('projects', table =>{
     table.increments('project_id')
-    table.text('project_name', 128)
+    table.string('project_name', 128)
         .unique()
         .notNullable()
-    table.text('project_description', 350)
+    table.string('project_description', 350)
         .notNullable()
-    table.boolean('project_completed', false)
+    table.boolean('project_completed')
     })
 
     .createTable('resources', table =>{
         table.increments('resource_id ')
-        table.text('resource_name', 128)
+        table.string('resource_name', 128)
             .unique()
             .notNullable()
-        table.text('resource_description', 350)
-            .notNullable()
+        // table.string('resource_description', 350)
+        //     .notNullable()
     })
 
     .createTable('tasks', table =>{
         table.increments('task_id')
-        table.text('task_description', 350)
+        table.string('task_description', 350)
             .notNullable()
-        table.text('task_notes', 350)
+        table.string('task_notes', 350)
             .notNullable()
         table.boolean('task_completed', false)
 
